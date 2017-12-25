@@ -1,0 +1,26 @@
+{
+  "name": "gserver",
+  "version": "1.0.1",
+  "description": "GServer",
+  "main": "server.js",
+  "scripts": {
+    "test": "node test.js",
+    "prod": "nohup nodemon -I prod.js &"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "date-utils": "^1.2.21",
+    "fs-extra": "^3.0.1",
+    "gm": "^1.23.0",
+    "moment": "^2.19.1",
+    "mongolass": "~2.4.5",
+    "q": "^1.5.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "restify": "^4.3.0",
+    "socket.io": "^1",
+    "vhost": "^3.0.2"
+  }
+}

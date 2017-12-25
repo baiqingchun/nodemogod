@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="/dev/files/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/dev/files/prettify.css">
+    <style type="text/css">
+        .sep1 { display: inline; margin-left: 100px; }
+        .sep2 { display: inline; margin-left: 30px; }
+    </style>
+    <script src="/dev/files/jquery.min.js" ></script>
+</head>
+<body>
+
+<div>
+    <div style="display: inline">
+        <a href="javascript:to('NA')"> GVR </a>
+    </div>
+    <div class="sep1">Filter:
+        <input id="filter" autofocus type="text" onchange="to()" />
+    </div>
+</div>
+
+<script>
+    var app_name = '';
+</script>
+
+<div>
+    {{package_list}}
+</div>
+<div>
+    {{md_list}}
+</div>
+<hr />
+    <button id="btn_publish" type="submit" onclick="post_to()" >Publish</button>
+    <input id="publish" type="text" />
+
+<script>
+    $('#app_name').val(app_name);
+
+    var to = function(change) {
+        var filter = document.getElementById('filter').value;
+
+        if (!change) change = app_name;
+        if (change === 'NA') change = '';
+
+        var url = '/dev?';
+        if (change) {
+            url += 'change=' + change + '&';
+        }
+
+        if (filter) {
+            url += 'filter=' + filter;
+        }
+
+        //location.href = url;
+
+        var theForm = document.createElement('form');
+
+        theForm.action = url;
+        theForm.method = 'post';
+        theForm.style.display = 'none';
+
+        theForm.submit();
+    };
+
+    var post_to = function () {
+        var theForm = document.createElement('form');
+        var ver = document.getElementById('publish').value;
+
+        theForm.action = '/dev/publish/' + app_name + '/' + ver;
+        theForm.method = 'post';
+        theForm.style.display = 'none';
+
+        theForm.submit();
+    };
+
+    var change_version = function(select_id) {
+        var newVersion = $('#' + select_id).val();
+
+        var package_name = select_id.substring(4);
+
+        to(package_name + '@' + newVersion);
+    };
+
+    document.getElementById('filter').value = '{{filter}}';
+
+    var v = '{{next_version}}';
+    if (v)
+        document.getElementById('publish').value = v;
+    else
+        document.getElementById('btn_publish').disabled = 'disabled';
+</script>
+
+</body>
+</html>
