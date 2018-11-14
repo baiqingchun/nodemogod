@@ -1,26 +1,17 @@
 {
-  "name": "gserver",
-  "version": "1.0.1",
-  "description": "GServer",
-  "main": "server.js",
+  "name": "mogond1",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "node test.js",
-    "prod": "nohup nodemon -I prod.js &"
+    "start": "node ./bin/www"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.5.1",
-    "date-utils": "^1.2.21",
-    "fs-extra": "^3.0.1",
-    "gm": "^1.23.0",
-    "moment": "^2.19.1",
-    "mongolass": "~2.4.5",
-    "q": "^1.5.1",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "restify": "^4.3.0",
-    "socket.io": "^1",
-    "vhost": "^3.0.2"
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "mongoose": "^5.3.11",
+    "morgan": "~1.9.0"
   }
 }
